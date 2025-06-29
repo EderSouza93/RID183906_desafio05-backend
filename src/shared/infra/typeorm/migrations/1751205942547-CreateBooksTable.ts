@@ -25,6 +25,7 @@ export class CreateBooksTable1751205942547 implements MigrationInterface {
           {
             name: 'ISBN_code',
             type: 'varchar',
+            isUnique: true,
           },
           {
             name: 'publisher',
