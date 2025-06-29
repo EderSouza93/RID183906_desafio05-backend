@@ -1,6 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
-@Entity('livros')
+@Entity('books')
 export class Book {
   @PrimaryGeneratedColumn()
   id: number;
@@ -12,10 +12,10 @@ export class Book {
   pages: number;
 
   @Column()
-  ISBN_code: string
+  ISBN_code: string;
 
   @Column()
-  publisher: string
+  publisher: string;
 
   @CreateDateColumn()
   created_at: Date;
