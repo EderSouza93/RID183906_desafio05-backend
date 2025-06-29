@@ -6,7 +6,6 @@ import { IBook } from "@books/domain/models/IBook";
 import { ICreateBook } from "@books/domain/models/ICreateBook";
 import { IPaginateBook } from "@books/domain/models/IPaginateBook";
 
-
 export type SearchParams = {
   page: number;
   skip: number;
@@ -41,12 +40,20 @@ class BooksRepository implements IBooksRepository {
     return result as unknown as IPaginateBook;
   }
 
-  public async findByTitle(title: string): Promise<IBook | null> {
+  public async findByIsbn(codeIsbn: string): Promise<IBook | null> {
     const book = await this.ormRepository.findOneBy({
-      title,
+      ISBN_code: codeIsbn,
     })
 
     return book as unknown as IBook;
+  }
+
+  public async findByTitle(title: string): Promise<IBook | null> {
+    const book = this.ormRepository.findOneBy({
+      title,
+    });
+
+    return book as unknown as IBook
   }
 
   public async findById(id: number): Promise<IBook | null> {
@@ -66,6 +73,13 @@ class BooksRepository implements IBooksRepository {
 
   public async save(book: IBook): Promise<void> {
     await this.ormRepository.save(book)
+  }
+
+  public async remove(book: IBook): Promise<void> {
+    const bookEntity = await this.ormRepository.findOneBy({ id: book.id });
+    if (bookEntity) {
+      await this.ormRepository.remove(bookEntity);
+    }
   }
 
 }
