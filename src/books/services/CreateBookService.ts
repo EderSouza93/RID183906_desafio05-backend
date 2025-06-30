@@ -12,7 +12,7 @@ export class CreateBookService {
   ) { }
 
   public async execute(data: ICreateBook): Promise<IBook> {
-    const { title, numberOfPages, isbnCode, publisher } = data;
+    const { title, pages, isbnCode, publisher } = data;
 
     const bookExists = await this.booksRepository.findByIsbn(isbnCode);
 
@@ -22,7 +22,7 @@ export class CreateBookService {
 
     const book = await this.booksRepository.create({
       title,
-      numberOfPages,
+      pages,
       isbnCode,
       publisher
     });

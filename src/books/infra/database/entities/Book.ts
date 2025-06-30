@@ -12,15 +12,15 @@ export class Book {
   pages: number;
 
   @Column()
-  ISBN_code: string;
+  isbnCode: string;
 
   @Column()
   publisher: string;
 
   @CreateDateColumn()
-  created_at: Date;
+  createdAt: Date;
 
   @UpdateDateColumn()
-  updated_at: Date;
+  updatedAt: Date;
 
 }

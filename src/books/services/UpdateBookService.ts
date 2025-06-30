@@ -6,7 +6,7 @@ import { inject, injectable } from "tsyringe";
 interface IRequest {
   id: number;
   title: string,
-  numberOfPages: number,
+  pages: number,
   isbnCode: string,
   publisher: string,
 }
@@ -20,7 +20,7 @@ export default class UpdateBookService {
   public async execute({
     id,
     title,
-    numberOfPages,
+    pages,
     isbnCode,
     publisher,
   }: IRequest): Promise<IBook> {
@@ -43,7 +43,7 @@ export default class UpdateBookService {
     }
 
     book.title = title,
-    book.numberOfPages = numberOfPages,
+    book.pages = pages,
     book.isbnCode = isbnCode;
     book.publisher = publisher;
 

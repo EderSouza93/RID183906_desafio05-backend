@@ -1,7 +1,7 @@
 export interface IBook {
   id: number,
   title: string,
-  numberOfPages: number,
+  pages: number,
   isbnCode: string,
   publisher: string,
   createdAt: Date,

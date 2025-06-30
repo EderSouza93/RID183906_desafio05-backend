@@ -1,7 +1,7 @@
-export interface ICreateBook {
+export interface IUpdateBook {
   id: number;
   title: string,
-  numberOfPages: number,
+  pages: number,
   isbnCode: string,
   publisher: string,
 }

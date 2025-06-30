@@ -23,7 +23,7 @@ export class CreateBooksTable1751205942547 implements MigrationInterface {
             type: 'integer',
           },
           {
-            name: 'ISBN_code',
+            name: 'isbnCode',
             type: 'varchar',
             isUnique: true,
           },
@@ -32,12 +32,12 @@ export class CreateBooksTable1751205942547 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'created_at',
+            name: 'createdAt',
             type: 'timestamp',
             default: 'now()',
           },
           {
-            name: 'updated_at',
+            name: 'updatedAt',
             type: 'timestamp',
             default: 'now()'
           }

@@ -8,12 +8,14 @@ import { container } from "tsyringe";
 
 export default class BooksControllers {
   public async index(request: Request, response: Response): Promise<void> {
-    const { page, skip, take } = request.query;
+    const page = request.query.page ? Number(request.query.page) : 1;
+    const take = request.query.take ? Number(request.query.take) : 10;
+    const skip = request.query.skip ? Number(request.query.skip) : (page - 1) * take
     const listBooksService = container.resolve(ListBookService);
     const books = await listBooksService.execute({
-      page: Number(page),
-      skip: Number(skip),
-      take: Number(take),
+      page,
+      skip,
+      take,
     });
 
     response.json(books);
@@ -29,12 +31,12 @@ export default class BooksControllers {
   }
 
   public async create(request: Request, response: Response): Promise<void> {
-    const { title, numberOfPages, isbnCode, publisher } = request.body;
+    const { title, pages, isbnCode, publisher } = request.body;
 
     const createBookService = container.resolve(CreateBookService);
     const book = await createBookService.execute({
       title,
-      numberOfPages,
+      pages,
       isbnCode,
       publisher,
     });
@@ -44,14 +46,14 @@ export default class BooksControllers {
 
   public async update(request: Request, response: Response): Promise<void> {
     const id = Number(request.params.id);
-    const { title, numberOfPages, isbnCode, publisher } = request.body;
+    const { title, pages, isbnCode, publisher } = request.body;
 
     const updateBookService = container.resolve(UpdateBookService);
 
     const book = await updateBookService.execute({
       id,
       title,
-      numberOfPages,
+      pages,
       isbnCode,
       publisher,
     });
