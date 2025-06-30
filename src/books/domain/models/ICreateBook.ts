@@ -1,6 +1,6 @@
 export interface ICreateBook {
   title: string,
-  numberOfPages: number,
+  pages: number,
   isbnCode: string,
   publisher: string,
 }

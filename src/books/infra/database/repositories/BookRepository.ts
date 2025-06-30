@@ -42,14 +42,14 @@ class BooksRepository implements IBooksRepository {
 
   public async findByIsbn(codeIsbn: string): Promise<IBook | null> {
     const book = await this.ormRepository.findOneBy({
-      ISBN_code: codeIsbn,
+      isbnCode: codeIsbn,
     })
 
     return book as unknown as IBook;
   }
 
   public async findByTitle(title: string): Promise<IBook | null> {
-    const book = this.ormRepository.findOneBy({
+    const book = await this.ormRepository.findOneBy({
       title,
     });
 
