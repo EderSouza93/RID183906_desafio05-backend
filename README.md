@@ -234,6 +234,7 @@ Para dúvidas ou problemas, abra uma issue no repositório do projeto.
 
 ---
 
-**Status**: ✅ Em desenvolvimento
-**Versão**: 1.0.0
-**Última atualização**: Dezembro 2024
+## Integração com Front-end
+Segue o link do repositório do frontend Ajustado
+[Frontend](https://github.com/EderSouza93/Desafio05-Front)
+
